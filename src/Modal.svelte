@@ -22,7 +22,7 @@
         width: 100%;
         height: 100%;
         position: fixed;
-        background: rgba(0,0,0,0.8);
+        background: rgba(0,0,0,0.6);
     }
 
     .modal{
@@ -32,9 +32,13 @@
         margin: 10% auto;
         text-align: center;
         max-width: 400px;
+        box-shadow:  10px 10px;
     }
 
     .info .modal{
-        background-color: tomato;
+        background-color: rgb(209,222,216);
+        border: 2px black;
+        box-shadow: rgba(0, 0, 0, 0.9) 0px 6px 24px;
+       
     }
 </style>
