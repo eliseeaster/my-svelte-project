@@ -2,7 +2,7 @@
 
 <script>
 import Modal from './Modal.svelte'
-let showModal = false;
+let showModal = true;
 
 const toggleModal = () => {
 	showModal = !showModal;
