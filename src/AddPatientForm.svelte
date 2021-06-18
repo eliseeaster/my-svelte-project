@@ -12,7 +12,7 @@
 	export let showForm;
 
 	const addPatient = () => {
-        showForm = !showForm
+        
 		let g = "Male";
 		{if (gender==1) {
 			g = "Female";
@@ -22,7 +22,7 @@
 		patients[patients.length] = newPatient; 
 		console.log(newPatient);
 		resetFields();
-        
+        showForm = false;
         console.log(showForm)
 	}
 
@@ -30,12 +30,24 @@
 		patientName = "";
 		age = "";
 		gender = 0;
+	}
 
+	const cancelForm = () =>{
+		resetFields();
+		showForm = false;
 	}
 
 </script>
 
 <main>
+
+	<h2>Patient List</h2>
+	{#each patients as patient (patient.id)}
+		<div>
+			<h3>{patient.Name}</h3>
+		</div>
+	{/each}
+
 	{#if showForm}
 		<form on:submit|preventDefault={addPatient}>
 			<input type= "text" placeholder="Name" bind:value={patientName} required/>
@@ -48,17 +60,12 @@
 				<input type= "radio" bind:group={gender} value={1} required/>
 				Female
 			</label>
-			<button>Add patient</button>
+			<button type="button" on:click={cancelForm}>Cancel</button>
+			<button>Add patient</button>			
 		</form>
 		
 	{/if}
-
-    	<h2>Patient List</h2>
-	{#each patients as patient (patient.id)}
-		<div>
-			<h3>{patient.Name}</h3>
-		</div>
-	{/each}
+	
 </main>
 
 <style>

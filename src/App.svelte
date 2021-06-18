@@ -1,30 +1,34 @@
 <script>
 
-import Modal from './Modal.svelte'
-import AddPatientForm from './AddPatientForm.svelte'
-let showModal = false;
-let showForm = false;
+	import Modal from './Modal.svelte'
+	import AddPatientForm from './AddPatientForm.svelte'
+
+	let showModal = false;
+	let showForm = false;
 
 
-// Modal
-const toggleModal = () => {
-	showModal = !showModal;
-}
-
-// Form
-export const ToggleForm = () => {
-		showForm = !showForm;
-		console.log(showForm)
+	// Modal
+	const toggleModal = () => {
+		showModal = !showModal;
 	}
+
+	// Form
+	export const ToggleForm = () => {
+			showForm = !showForm;
+			console.log(showForm)
+		}
 
 </script>
 
 <Modal header="Information" message="Here is some information" isInfo={true} {showModal} on:click={toggleModal}/>
 <main>
-	<button on:click={toggleModal}>Open modal</button>
-	<button on:click={ToggleForm}>Add new patient</button>
-	<AddPatientForm {showForm} on:click={ToggleForm}/>
-
+	<AddPatientForm bind:showForm on:click={ToggleForm}/>
+	{#if !showForm}
+		<button on:click={toggleModal}>Open modal</button>
+		<button on:click={ToggleForm}>Add new patient</button>		
+	{/if}
+		
+	
 
 </main>
 
